@@ -1,17 +1,15 @@
 use druid::{AppLauncher, WindowDesc};
 use page::auth::build_auth_ui;
-use state::AuthState;
+use data::AuthState;
 
 mod page;
-mod state;
+mod data;
 mod client;
+mod delegate;
+use delegate::Delegate;
 
-fn main() {
-    // Создаем главное окно
-    let main_window = WindowDesc::new(build_auth_ui())
-        .title("Login Form")
-        .window_size((300.0, 200.0));
-
+#[tokio::main]
+async fn main() {
     // Начальное состояние приложения
     let initial_state = AuthState {
         email: "".into(),
@@ -20,8 +18,12 @@ fn main() {
         is_logged_in: false, // Пользователь не залогинен по умолчанию
     };
 
-    // Запуск приложения
+    let main_window = WindowDesc::new(build_auth_ui())
+        .title("Todo Tutorial")
+        .window_size((400.0, 400.0));
+
     AppLauncher::with_window(main_window)
+        .delegate(Delegate {})
         .launch(initial_state)
         .expect("Failed to launch application");
 }
