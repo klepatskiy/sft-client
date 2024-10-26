@@ -14,12 +14,12 @@ pub struct FriendState {
 }
 
 impl FriendState {
-    pub fn add_friend(&mut self, name: String, online: bool) {
-    }
-
-    pub fn remove_friend(&mut self, name: &str) {
-    }
-
-    pub fn update_status(&mut self, name: &str, online: bool) {
-    }
+    // pub fn add_friend(&mut self, name: String, online: bool) {
+    // }
+    //
+    // pub fn remove_friend(&mut self, name: &str) {
+    // }
+    //
+    // pub fn update_status(&mut self, name: &str, online: bool) {
+    // }
 }

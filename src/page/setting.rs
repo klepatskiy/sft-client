@@ -1,5 +1,5 @@
 use crate::state::data::AppState;
-use druid::widget::{Widget, Button, Flex, Label, WidgetExt, Align};
+use druid::widget::{Widget, Button, Flex, Label, WidgetExt};
 
 pub fn build_settings_page() -> impl Widget<AppState> {
     Flex::row()
