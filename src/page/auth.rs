@@ -8,15 +8,12 @@ use crate::state::data::AuthState;
 
 const LOGIN_RESPONSE: Selector<Result<LoginReply, String>> = Selector::new("login-response");
 
-// Функция для создания интерфейса авторизации
 pub fn build_auth_ui() -> impl Widget<AuthState> {
-    // Поле для ввода email
     let email_input = TextBox::new()
         .with_placeholder("Enter your email")
         .lens(AuthState::email)
         .padding(5.0);
 
-    // Поле для ввода логина
     let login_input = TextBox::new()
         .with_placeholder("Enter your login")
         .lens(AuthState::login)
@@ -37,7 +34,6 @@ pub fn build_auth_ui() -> impl Widget<AuthState> {
     let display_label = Label::new(|data: &AuthState, _env: &_| data.display_message.clone())
         .padding(5.0);
 
-    // Вернем UI с помощью Flex
     Flex::column()
         .with_child(email_input)
         .with_child(login_input)
