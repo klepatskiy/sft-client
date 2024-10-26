@@ -1,21 +1,21 @@
 use druid::{AppLauncher, WindowDesc};
 use page::auth::build_auth_ui;
-use data::AuthState;
 
 mod page;
-mod data;
 mod client;
 mod delegate;
+mod state;
+
 use delegate::Delegate;
+use crate::state::data::AuthState;
 
 #[tokio::main]
 async fn main() {
-    // Начальное состояние приложения
     let initial_state = AuthState {
         email: "".into(),
         login: "".into(),
         display_message: "Please enter your credentials".into(),
-        is_logged_in: false, // Пользователь не залогинен по умолчанию
+        is_logged_in: false,
     };
 
     let main_window = WindowDesc::new(build_auth_ui())

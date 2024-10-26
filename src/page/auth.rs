@@ -4,7 +4,7 @@ use druid::widget::{Button, Flex, Label, TextBox};
 use druid::{Widget, WidgetExt, Target, Selector};
 use crate::client::auth::LoginReply;
 use crate::client::grpc_login_request;
-use crate::data::AuthState;
+use crate::state::data::AuthState;
 
 const LOGIN_RESPONSE: Selector<Result<LoginReply, String>> = Selector::new("login-response");
 

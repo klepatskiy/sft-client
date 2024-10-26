@@ -1,6 +1,6 @@
 use druid::{AppDelegate, Command, DelegateCtx, Env, Handled, Selector, Target};
 use crate::client::auth::LoginReply;
-use crate::data::AuthState;
+use crate::state::data::AuthState;
 
 const LOGIN_RESPONSE: Selector<Result<LoginReply, String>> = Selector::new("login-response");
 
