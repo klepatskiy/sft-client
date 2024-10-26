@@ -14,18 +14,18 @@ pub fn build_auth_ui() -> impl Widget<AuthState> {
         .lens(AuthState::email)
         .padding(5.0);
 
-    let login_input = TextBox::new()
-        .with_placeholder("Enter your login")
-        .lens(AuthState::login)
+    let password_input = TextBox::new()
+        .with_placeholder("Enter your password")
+        .lens(AuthState::password)
         .padding(5.0);
 
     let submit_button = Button::new("Submit").on_click(|ctx, data: &mut AuthState, _env| {
         let email = data.email.clone();
-        let login = data.login.clone();
+        let password = data.password.clone();
 
         let handle = ctx.get_external_handle();
         spawn(async move {
-            let result = async_login(email, login).await;
+            let result = async_login(email, password).await;
             let result = result.map_err(|e| e.to_string());
             handle.submit_command(LOGIN_RESPONSE, result, Target::Auto).unwrap();
         });
@@ -36,7 +36,7 @@ pub fn build_auth_ui() -> impl Widget<AuthState> {
 
     Flex::column()
         .with_child(email_input)
-        .with_child(login_input)
+        .with_child(password_input)
         .with_child(submit_button)
         .with_child(display_label)
         .padding(10.0)
