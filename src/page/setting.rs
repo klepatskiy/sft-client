@@ -24,8 +24,17 @@ pub fn build_settings_page() -> impl Widget<AppState> {
                             println!("Hotkeys settings clicked");
                         }),
                 )
+                .with_spacer(5.0)
+                .with_child(
+                    Button::new("Назад")
+                        .padding((10.0, 5.0))
+                        .expand_width()
+                        .on_click(|_ctx, _data: &mut AppState, _env| {
+                            println!("Back to setting");
+                        }),
+                )
                 .background(druid::theme::BACKGROUND_DARK)
-                .padding((10.0, 10.0)), // Отступы, чтобы прижать блок к верхнему левому углу
+                .padding((10.0, 10.0)),
             1.0,
         )
         .with_flex_child(
